@@ -1,4 +1,4 @@
-# Proxy Design Pattern (代理设计模式)
+# 代理模式 (Proxy Design Pattern)
 
 ## 概述
 为一个对象提供一个替身，以控制对这个对象的访问。即通过代理对象访问目标对象，
@@ -19,9 +19,9 @@
 在使用时需要定义接口或者父类，被代理对象（即目标对象）与代理对象实现相同的接口或者是继承相同的父类
 
 **具体要求**
-1. 定义一个接口ISubject
-2. 目标对象TargetSubject实现接口ISubject
-3. 代理对象Proxy实现接口ISubject,即与目标对象实现相同的接口ISubject
+1. 定义一个接口IObject
+2. 目标对象TargetObject实现接口IObject
+3. 代理对象Proxy实现接口IObject,即与目标对象实现相同的接口IObject
 4. 调用时通过调用代理对象的方法来调用目标对象
 
 **特别提醒：**
@@ -50,7 +50,19 @@ public class Proxy implements java.io.Serializable {
 ```
 
 2. Cglib代理
+步骤：
+1. 引入Cglib的jar包
+2. 在内存中动态构建了类，注意代理的类不能为final，否则报错 java.lang.IllegaArgumentException
+3. 目标对象的方法如果为final/static，那么就不会被拦截，即不会执行目标对象额外的业务方法
 
+1. 静态代理和JDK代理都要求目标对象是实现一个接口，但是有时候目标对象只是一个单独的对象，并没有实现任何的接口，这个时候可使用目标对象
+子类来实现代理-这就是Cglib代理
+2. Cglib代理也叫作子类代理，它是在内存中构建一个子类对象从而实现对目标对象功能扩展，有些书也将Cglib代理归属到动态代理。
+3. Cglib是一个强大的高性能的代码生成包，它可以在运行期扩展Java类与实现java接口，它广泛的被许多AOP的框架使用，例如Spring AOP,实现方法拦截
+4. 在AOP编程中如何选择代理模式：
+- 目标对象需要实现接口，用JDK代理
+- 目标对象不要要实现接口，用Cglib代理
+5. Cglib包的底层是通过使用字节码处理框架ASM来转换字节码并生成新的类
 
 
 ## 问题或意图

@@ -36,7 +36,7 @@
 ### 动态代理
 
 1. JDK代理
-- 代理对象不需要实现接口，但是目标对象要实现接口，否则不能使用动态代理
+- 代理对象不需要实现接口，但是目标对象要实现接口，否则不能使用JDK动态代理
 - 代理对象的生成，是利用JDK的API,动态的在内存中构建代理对象
 - 也叫接口代理
 
@@ -52,7 +52,7 @@ public class Proxy implements java.io.Serializable {
 2. Cglib代理
 步骤：
 1. 引入Cglib的jar包
-2. 在内存中动态构建了类，注意代理的类不能为final，否则报错 java.lang.IllegaArgumentException
+2. 在内存中动态构建了类，注意: 代理的类不能为final，否则报错 java.lang.IllegaArgumentException
 3. 目标对象的方法如果为final/static，那么就不会被拦截，即不会执行目标对象额外的业务方法
 
 1. 静态代理和JDK代理都要求目标对象是实现一个接口，但是有时候目标对象只是一个单独的对象，并没有实现任何的接口，这个时候可使用目标对象

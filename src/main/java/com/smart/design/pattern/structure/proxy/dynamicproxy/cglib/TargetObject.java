@@ -6,7 +6,7 @@ package com.smart.design.pattern.structure.proxy.dynamicproxy.cglib;
 public class TargetObject {
 
     public void operation() {
-        System.out.println("目标对象方法调用");
+        System.out.println("Cglib代理，目标对象方法调用");
     }
 
 }

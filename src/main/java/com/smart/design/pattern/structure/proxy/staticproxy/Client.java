@@ -17,9 +17,13 @@ public class Client {
         proxy.operation();*/
 
         // 被代理对象通过构造方法注入
-        TargetObject target=new TargetObject();
-        ProxyObject proxy=new ProxyObject(target);
-        proxy.operation();
+        task();
 
+    }
+
+    private static void task() {
+        OriginalObject originalObject = new OriginalObject();
+        ProxyObject proxy = new ProxyObject(originalObject);
+        proxy.operation();
     }
 }

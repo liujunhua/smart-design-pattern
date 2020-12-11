@@ -5,7 +5,7 @@ package com.smart.design.pattern.structure.proxy.staticproxy;
  */
 public class ProxyObject implements IObject {
 
-    // 目标对象，通过接口来聚合
+    // 原始对象，通过接口来聚合
     private IObject target;
 
     /**
@@ -18,7 +18,7 @@ public class ProxyObject implements IObject {
 
     public ProxyObject() {
         // 直接依赖
-        this.target = new TargetObject();
+        this.target = new OriginalObject();
     }
 
     /**

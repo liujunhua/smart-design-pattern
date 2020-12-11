@@ -2,8 +2,8 @@ package com.smart.design.pattern.creation.singleton;
 
 /**
  * @author liujunhua
- * @description: 懒汉式（线程安全，同步代码块,双重检查）
  * @date 2020/11/1610:52
+ * @description: 懒汉式（线程安全，同步代码块,双重检查）
  *
  * <p>
  * 1. 这种方式，本意是想对懒汉式（线程安全，同步方法）方式的改进，因为前面同步方法效率太低，
@@ -17,12 +17,16 @@ package com.smart.design.pattern.creation.singleton;
 
 public class SingletonByThreadSafe {
 
+    public static void main(String[] args) {
+
+    }
+
     private SingletonByThreadSafe() {
     }
 
     private static SingletonByThreadSafe instance;
 
-    public static SingletonByThreadSafe getInstance() {
+    public static SingletonByThreadSafe getInstanceByThreadUnsafe() {
         if (instance == null) { // 其实线程不安全
             synchronized (SingletonByThreadSafe.class) {
                 instance = new SingletonByThreadSafe();
@@ -49,7 +53,7 @@ public class SingletonByThreadSafe {
      * 提供一个静态的公有方法，加入了双重检查代码，解决线程安全问题，同时解决赖加载问题
      * 同时保证了效率，推荐使用
      */
-     /*public static SingletonByThreadSafe getInstance() {
+     public static SingletonByThreadSafe getInstance() {
         if (instance == null) {//提高效率
             synchronized (SingletonByThreadSafe.class) {
                 if (instance == null) {
@@ -58,5 +62,5 @@ public class SingletonByThreadSafe {
             }
         }
         return instance;
-    }*/
+    }
 }

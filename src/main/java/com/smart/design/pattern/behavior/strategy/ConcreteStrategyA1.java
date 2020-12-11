@@ -5,7 +5,7 @@ package com.smart.design.pattern.behavior.strategy;
  * @description: TODO
  * @date 2020/9/1111:33
  */
-public class ConcreteStrategyA1 implements StrategyA {
+public class  ConcreteStrategyA1 implements StrategyA {
     @Override
     public void operate1() {
         System.out.println("ConcreteStrategyA1.operate1()被调用");
